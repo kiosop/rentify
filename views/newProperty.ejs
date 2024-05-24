@@ -1,0 +1,48 @@
+<form id="addPropertyForm" action="/newProperty" method="POST" >
+    <div class="form-group">
+        <label for="propertyTitle">Property Title</label>
+        <input type="text" class="form-control" id="propertyTitle" name="propertyTitle" required>
+    </div>
+
+    <div class="form-group">
+        <label for="propertyType">Property Type</label>
+        <select class="form-control" id="propertyType" name="propertyType" required>
+            <option value="APARTMENT">Apartment</option>
+            <option value="VILLA">Villa</option>
+            <option value="FARMHOUSE">Farmhouse</option>
+            <option value="STUDIO">STUDIO</option>
+            <option value="PENTHOUSE">PENTHOUSE</option>
+            <option value="PG">PG</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" class="form-control" id="price" name="price" required>
+    </div>
+    <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" class="form-control" id="address" name="address" required>
+    </div>
+    <div class="form-group">
+        <label for="address">Nearby Landmark</label>
+        <input type="text" class="form-control" id="nearbyLandmark" name="nearbyLandmark" >
+    </div>
+    <div class="form-group">
+        <label for="city">City</label>
+        <input type="number" class="form-control" id="city" name="city" >
+    </div>
+    <div class="form-group">
+        <label for="bedroomCount">Bedroom Count</label>
+        <input type="number" class="form-control" id="bedroomCount" name="bedroomCount" >
+    </div>
+    <div class="form-group">
+        <label for="nearbyCollegeDistance">Nearby College Distance</label>
+        <input type="number" class="form-control" id="nearbyCollegeDistance" name="nearbyCollegeDistance" >
+    </div>
+    <div class="form-group">
+        <label for="nearbyHospitalDistance">Nearby Hospital Distance</label>
+        <input type="number" class="form-control" id="nearbyHospitalDistance" name="nearbyHospitalDistance" >
+    </div>
+    <!-- Add more form fields for other property details -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

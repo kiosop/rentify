@@ -1,0 +1,41 @@
+<h1>buyerDashboard</h1>
+
+<% if(data.length>0) {%>
+									
+    <table style="border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th style="border: 1px solid black;">property Title</th>
+                <th style="border: 1px solid black;">property Type</th>
+                <th style="border: 1px solid black;">price</th>
+                <th style="border: 1px solid black;">address</th>
+                <th style="border: 1px solid black;">nearby Landmark</th>
+                <th style="border: 1px solid black;">city</th>
+                <th style="border: 1px solid black;">propertyOwnerContactPhoneNumber</th>
+                <th style="border: 1px solid black;">bedroom Count</th>
+                <th style="border: 1px solid black;">nearby College Distance</th>
+                <th style="border: 1px solid black;">nearby Hospital Distance</th>
+            </tr>
+        </thead >
+        
+        <tbody>
+        <% for(var i=0; i<data.length; i++) {%>
+            <tr class="<%= data[i].propertyId%>apnaarea">
+                    <td  style="border: 1px solid black;" class="propertyTitle"><%= data[i].propertyTitle%></td>
+                    <td  style="border: 1px solid black;" class="propertyType"><%= data[i].propertyType%></td>
+                    <td  style="border: 1px solid black;" class="price"><%= data[i].price%></td>
+                    <td  style="border: 1px solid black;" class="address"><%= data[i].address%></td>
+                    <td  style="border: 1px solid black;" class="nearbyLandmark"><%= data[i].nearbyLandmark%></td>
+                    <td  style="border: 1px solid black;" class="city"><%= data[i].city%></td>
+                    <td  style="border: 1px solid black;" class="propertyOwnerContactPhoneNumber"><%= data[i].propertyOwnerContactPhoneNumber%></td>
+                    <td  style="border: 1px solid black;" class="bedroomCount"><%= data[i].bedroomCount%></td>
+                    <td  style="border: 1px solid black;" class="nearbyCollegeDistance"><%= data[i].nearbyCollegeDistance%></td>
+                    <td  style="border: 1px solid black;" class="nearbyHospitalDistance"><%= data[i].nearbyHospitalDistance%></td>
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
+
+<%}else{%>
+    <h4>No new data</h4>
+<%}%>

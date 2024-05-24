@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+
+        <h1>Seller Dashboard</h1>
+
+        <a href="/newProperty">Add new property</a>
+
+        <% if(data.length>0) {%>
+                                            
+            <table style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th style="border: 1px solid black;">property Title</th>
+                        <th style="border: 1px solid black;">property Type</th>
+                        <th style="border: 1px solid black;">price</th>
+                        <th style="border: 1px solid black;">address</th>
+                        <th style="border: 1px solid black;">nearby Landmark</th>
+                        <th style="border: 1px solid black;">City</th>
+                        <th style="border: 1px solid black;">bedroom Count</th>
+                        <th style="border: 1px solid black;">nearby College Distance</th>
+                        <th style="border: 1px solid black;">nearby Hospital Distance</th>
+                        <th style="border: 1px solid black;">EDIT</th>
+                        <th style="border: 1px solid black;">DELETE</th>
+                    </tr>
+                </thead >
+                
+                <tbody>
+                <% for(var i=0; i<data.length; i++) {%>
+                    <tr class="<%= data[i].propertyId%>apnaarea">
+                            <td  style="border: 1px solid black;" class="propertyTitle"><%= data[i].propertyTitle%></td>
+                            <td  style="border: 1px solid black;" class="propertyType"><%= data[i].propertyType%></td>
+                            <td  style="border: 1px solid black;" class="price"><%= data[i].price%></td>
+                            <td  style="border: 1px solid black;" class="address"><%= data[i].address%></td>
+                            <td  style="border: 1px solid black;" class="nearbyLandmark"><%= data[i].nearbyLandmark%></td>
+                            <td  style="border: 1px solid black;" class="city"><%= data[i].city%></td>
+                            <td  style="border: 1px solid black;" class="bedroomCount"><%= data[i].bedroomCount%></td>
+                            <td  style="border: 1px solid black;" class="nearbyCollegeDistance"><%= data[i].nearbyCollegeDistance%></td>
+                            <td  style="border: 1px solid black;" class="nearbyHospitalDistance"><%= data[i].nearbyHospitalDistance%></td>
+
+                            <td  style="border: 1px solid black;">
+                                <button type="button"><a href="/editProperty?propertyId=<%=data[i].propertyId%>">Edit</a></button>
+                            </td>
+                            
+                            <td  style="border: 1px solid black;">
+                                <button onclick="deleteProperty('<%=data[i].propertyId%>')" type="button"><a href="">Delete</a></button>
+                            </td>
+                    </tr>
+                <% } %>
+                </tbody>
+            </table>
+
+        <%}else{%>
+            <h4>No new data</h4>
+        <%}%>
+        
+        <script>
+            function deleteProperty(propertyId) {
+                if (confirm("Are you sure you want to delete this property?")) {
+                    fetch('/deleteProperty', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ propertyId: propertyId })
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            window.location.reload();
+                        } else {
+                            throw new Error('Failed to delete property.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error deleting property:', error);
+                        alert('Failed to delete property. Please try again later.');
+                    });
+                }
+            }
+            
+        </script>
+    </body>
+</html>
+
+

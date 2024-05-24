@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Property</title>
+</head>
+<body>
+    <h1>Edit Property</h1>
+    <% data.forEach(property => { %>
+        <h1><%= property.propertyTitle %></h1>
+        <form id="editPropertyForm" action="/editProperty?propertyId=<%= property.propertyId %>" method="POST">
+            <input type="hidden" name="propertyId" value="<%= property.propertyId %>">
+
+            <label for="propertyTitle">Property Title:</label><br>
+            <input type="text" id="propertyTitle" name="propertyTitle" value="<%= property.propertyTitle %>" required><br>
+
+            <label for="propertyType">Property Type:</label><br>
+            <select id="propertyType" name="propertyType" required>
+                <option value="APARTMENT" <%= property.propertyType === 'APARTMENT' ? 'selected' : '' %>>Apartment</option>
+                <option value="VILLA" <%= property.propertyType === 'VILLA' ? 'selected' : '' %>>Villa</option>
+                <option value="FARMHOUSE" <%= property.propertyType === 'FARMHOUSE' ? 'selected' : '' %>>Farmhouse</option>
+                <option value="STUDIO" <%= property.propertyType === 'STUDIO' ? 'selected' : '' %>>STUDIO</option>
+                <option value="PG" <%= property.propertyType === 'PG' ? 'selected' : '' %>>PG</option>
+
+            </select><br>
+
+            <label for="price">Price:</label><br>
+            <input type="number" id="price" name="price" value="<%= property.price %>" required><br>
+
+            <label for="address">Address:</label><br>
+            <input type="text" id="address" name="address" value="<%= property.address %>" required><br>
+
+            <label for="city">City:</label><br>
+            <input type="text" id="city" name="city" value="<%= property.city %>" required><br>
+
+            <label for="bedroomCount">Bedroom Count:</label><br>
+            <input type="number" id="bedroomCount" name="bedroomCount" value="<%= property.bedroomCount %>" required><br>
+
+            <label for="nearbyCollegeDistance">Nearby College Distance:</label><br>
+            <input type="number" id="nearbyCollegeDistance" name="nearbyCollegeDistance" value="<%= property.nearbyCollegeDistance %>" required><br>
+
+            <label for="nearbyHospitalDistance">Nearby Hospital Distance:</label><br>
+            <input type="number" id="nearbyHospitalDistance" name="nearbyHospitalDistance" value="<%= property.nearbyHospitalDistance %>" required><br>
+
+            <button type="submit">Save Changes</button>
+        </form>
+    <% }) %>
+</body>
+</html>
